@@ -1,4 +1,4 @@
-#include <GL/glew.h>
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <glm/glm.hpp>
@@ -77,10 +77,7 @@ int main() {
         std::cerr << "create window failed" << std::endl;
     }
     glfwMakeContextCurrent(window);
-    GLenum err = glewInit();
-    if (GLEW_OK != err) {
-        std::cerr << "glewInit failed" << std::endl;
-    }
+    gladLoadGL();
 
     auto vertices = generate_cube_vertices({});
 

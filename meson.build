@@ -1,7 +1,13 @@
-project('opengl_cube', 'cpp')
+project('opengl_cube', ['cpp','c'])
 
-glew = dependency('glew')
-glfw3 = dependency('glfw3')
+cmake = import('cmake')
 
+glfw_proj = cmake.subproject('glfw', required: true)
 
-executable('opengl_cube', 'main.cpp', dependencies:[glfw3,glew])
+glfw = glfw_proj.dependency('glfw')
+
+inc = include_directories('./include')
+
+executable('opengl_cube', ['main.cpp', 'src/glad.c'],
+  dependencies:glfw,
+  include_directories:inc)
