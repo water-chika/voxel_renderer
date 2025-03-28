@@ -7,6 +7,11 @@
 python -m pip install meson
 ```
 
+### Install Ninja
+```
+python -m pip install ninja
+```
+
 ### Build
 ```
 meson setup build
